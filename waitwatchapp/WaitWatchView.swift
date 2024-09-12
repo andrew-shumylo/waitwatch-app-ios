@@ -36,7 +36,7 @@ struct WaitWatchView: View {
                     displayedComponents: [.date, .hourAndMinute]
                 )
                 .datePickerStyle(WheelDatePickerStyle())
-                .colorInvert()
+                .colorScheme(.dark)
                 .padding()
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(15)

@@ -22,7 +22,7 @@ struct AddMomentView: View {
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(8)
                     .padding()
-
+                
                 Spacer()
                 
                 Button(action: addMoment) {
@@ -38,12 +38,13 @@ struct AddMomentView: View {
                 .padding(.horizontal, 30)
                 .padding(.bottom, 30)
                 .disabled(!isValidMomentName())
-
+                
                 Spacer()
             }
             .navigationTitle("Add Moment")
             .navigationBarItems(trailing: Button("Cancel") {
                 presentationMode.wrappedValue.dismiss()
+                isAddingMoment = false // Set isAddingMoment to false when dismissing the view
             })
             .preferredColorScheme(.dark)
         }
