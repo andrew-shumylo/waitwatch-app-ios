@@ -78,16 +78,15 @@ class TimerViewModel: ObservableObject {
         }
     }
 
+    
     func deleteMoment(at offsets: IndexSet) {
-        moments.remove(atOffsets: offsets)
-        saveMoments()
-    }
+            moments.remove(atOffsets: offsets)
+        }
 
     func pinMoment(_ moment: MomentModel) {
-        // Implementation for pinning a moment
-    }
-
-    func editMoment(_ moment: MomentModel) {
-        // Implementation for editing a moment
-    }
+            if let index = moments.firstIndex(where: { $0.id == moment.id }) {
+                moments[index].isPinned.toggle() // Toggle the pin state
+                moments.sort { $0.isPinned && !$1.isPinned }
+            }
+        }
 }
