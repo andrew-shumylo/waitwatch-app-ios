@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct WaitWatchView: View {
-    @StateObject private var timerViewModel = TimerViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject private var timerViewModel = TimerViewModel()
     @Binding var isAddingMoment: Bool
     @State private var showingAddMomentModal = false
     @State private var momentName: String = ""

@@ -44,7 +44,6 @@ struct MomentView: View {
                 .tint(.red)
             }
 
-            // Pin/Unpin Logic
             Button(action: {
                         timerViewModel.pinMoment(moment)
             }) {
@@ -56,7 +55,6 @@ struct MomentView: View {
 
         Spacer()
 
-        // Button to add a new moment
         Button(action: {
           showWaitWatchView = true
         }) {
@@ -64,7 +62,7 @@ struct MomentView: View {
             .font(.system(size: 20, weight: .medium))
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.orange)
+            .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(12)
             .shadow(radius: 5)
