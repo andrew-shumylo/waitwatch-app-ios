@@ -11,13 +11,18 @@ struct AddMomentView: View {
     @Binding var isAddingMoment: Bool
     @Binding var momentName: String
     @ObservedObject var timerViewModel: TimerViewModel
-
-    @Environment(\.presentationMode) private var presentationMode
+    
+    @Environment(\.dismiss) private var dismiss  // Use this to dismiss the modal
 
     var body: some View {
         NavigationView {
             VStack {
                 TextField("Moment Name", text: $momentName)
+                    .onChange(of: momentName) {
+                        if momentName.count > 30 {
+                            momentName = String(momentName.prefix(30))
+                        }
+                    }
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(8)
@@ -43,7 +48,7 @@ struct AddMomentView: View {
             }
             .navigationTitle("Add Moment")
             .navigationBarItems(trailing: Button("Cancel") {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
                 isAddingMoment = false // Set isAddingMoment to false when dismissing the view
             })
             .preferredColorScheme(.dark)
@@ -57,8 +62,8 @@ struct AddMomentView: View {
     private func addMoment() {
         if isValidMomentName() {
             timerViewModel.addMoment(name: momentName)
-            presentationMode.wrappedValue.dismiss()
-            isAddingMoment = false // Navigate back to Moments list
+            dismiss() // Dismiss the modal
+            isAddingMoment = false // Ensure we go back to the root view
         }
     }
 }

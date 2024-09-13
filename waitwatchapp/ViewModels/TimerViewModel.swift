@@ -44,8 +44,8 @@ class TimerViewModel: ObservableObject {
             timer?.invalidate()
         } else {
             let timeModel = TimeModel(timeInterval: timeInterval)
-            yearsMonthsDays = timeModel.formattedDateComponents()
             hoursMinutesSeconds = timeModel.formattedTimeComponents()
+            yearsMonthsDays = timeModel.formattedDateComponents()
         }
     }
 
