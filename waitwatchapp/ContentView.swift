@@ -10,13 +10,16 @@ import SwiftUI
 struct ContentView: View {
     init() {
         let appearance = UITabBarAppearance()
-        UITabBar.appearance().standardAppearance = appearance
-        UITabBar.appearance().scrollEdgeAppearance = appearance
+                
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = UIColor.black
+
+                UITabBar.appearance().tintColor = UIColor.orange
+                UITabBar.appearance().unselectedItemTintColor = UIColor.gray.withAlphaComponent(0.6)
         
-        let tbc = UITabBarController()
-        tbc.tabBar.tintColor = UIColor(named: "selectedTabColor") ?? UIColor.orange
-        tbc.tabBar.unselectedItemTintColor = UIColor(named: "unselectedTabColor") ?? UIColor.gray.withAlphaComponent(0.6)
-    }
+                UITabBar.appearance().standardAppearance = appearance
+                UITabBar.appearance().scrollEdgeAppearance = appearance
+            }
     
     var body: some View {
         TabView {
